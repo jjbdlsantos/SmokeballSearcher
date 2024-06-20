@@ -4,12 +4,16 @@ namespace SmokeballSearcher.Models
 {
     public interface ISearchEngine
     {
-        public List<SearchResultLW> GetSearchEngineResultsByKeyword(string keyword);
+        public List<SearchResultLW>? GetSearchEngineResultsByKeyword(string keyword);
         public List<SearchResultLW> ParseResults(string rawJson);
 
         public List<int> RunSearch(string keyword, string url)
         {
             var results = GetSearchEngineResultsByKeyword(keyword);
+            if (results == null)
+            {
+                return new List<int> { -1 };
+            }
             return FindURLPositions(results, url);
         }
 

@@ -46,6 +46,25 @@ namespace SearchTests
         }
 
         [Fact]
+        public void ExecuteSearch_SetsUrlPositionsToErrorMessage()
+        {
+            //Arrange
+            var mockSearchEngine = new Mock<ISearchEngine>();
+            var sr = new List<int> { -1 };
+            var errorMessage = "An error occured while querying the search engine.";
+            mockSearchEngine.Setup(m => m.RunSearch(It.IsAny<string>(), It.IsAny<string>()))
+                            .Returns(sr);
+            var viewModel = new SearchViewModel(mockSearchEngine.Object);
+
+            //Act
+            viewModel.ExecuteSearch();
+
+            //Assert
+            Assert.Equal(sr.Count, viewModel.SearchResults.Count);
+            Assert.Equal(errorMessage, viewModel.UrlPositions);
+        }
+
+        [Fact]
         public void FindURLPositions_ReturnsSingleMatch()
         {
             //arrange

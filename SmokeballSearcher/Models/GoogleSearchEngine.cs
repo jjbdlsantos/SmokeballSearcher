@@ -6,12 +6,13 @@ namespace SmokeballSearcher.Models
 {
     public class GoogleSearchEngine : ISearchEngine
     {
+        //api key not hidden for the sake of exercise
         private static readonly string googleApiKey = "AIzaSyCRPMD65A-QUBuwiqYErmPO444GmlVjgfw";
         private static readonly string searchEngineId = "f013bf36f4ae6423d";
         private readonly int resultsLimit = 100;
         private readonly int resultsPerPage = 10;
 
-        public List<SearchResultLW> GetSearchEngineResultsByKeyword(string keyword)
+        public List<SearchResultLW>? GetSearchEngineResultsByKeyword(string keyword)
         {
             if (string.IsNullOrEmpty(keyword))
             {
@@ -27,13 +28,13 @@ namespace SmokeballSearcher.Models
                     {
                         results.AddRange(ParseResults(client.GetStringAsync(requestUri).Result));
                     }
+                    return results;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    return null;
                 }
             }
-            return results;
         }
 
         public List<SearchResultLW> ParseResults(string rawJson)

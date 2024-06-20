@@ -65,12 +65,16 @@ namespace SmokeballSearcher.ViewModels
         public void ExecuteSearch()
         {
             SearchResults.Clear();
-            var results = _searchEngine.RunSearch(Keywords, TargetUrl);
-            foreach (var result in results)
+            SearchResults = _searchEngine.RunSearch(Keywords, TargetUrl);
+
+            if (SearchResults.Count > 0 && SearchResults.First() == -1)
             {
-                SearchResults.Add(result);
+                UrlPositions = "An error occured while querying the search engine.";
             }
-            UrlPositions = string.IsNullOrEmpty(string.Join(", ", SearchResults)) ? "0" : string.Join(", ", SearchResults);
+            else
+            {
+                UrlPositions = string.IsNullOrEmpty(string.Join(", ", SearchResults)) ? "0" : string.Join(", ", SearchResults);
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
