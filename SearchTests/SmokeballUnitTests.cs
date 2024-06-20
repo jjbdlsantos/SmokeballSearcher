@@ -1,8 +1,6 @@
-using SmokeballSearcher;
 using Moq;
 using SmokeballSearcher.Models;
 using SmokeballSearcher.Helpers;
-using System.DirectoryServices;
 using SmokeballSearcher.ViewModels;
 
 namespace SearchTests

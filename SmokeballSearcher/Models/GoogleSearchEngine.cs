@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net.Http;
-using System.Security.Policy;
-using System.Text;
+﻿using System.Net.Http;
 using System.Text.Json;
-using System.Threading.Tasks;
 using SmokeballSearcher.Helpers;
 
 namespace SmokeballSearcher.Models
@@ -24,17 +17,23 @@ namespace SmokeballSearcher.Models
             {
                 return new List<SearchResultLW>();
             }
-            var limit = 100;
             var requestUri = $"https://www.googleapis.com/customsearch/v1?q={Uri.EscapeDataString(keyword)}&key={googleApiKey}&cx={searchEngineId}&highRange={resultsLimit}";
             var results = new List<SearchResultLW>();
             using (var client = new HttpClient())
             {
-                for (int start = 1; start < limit; start += resultsPerPage)
+                try
                 {
-                    results.AddRange(ParseResults(client.GetStringAsync(requestUri).Result));
+                    for (int start = 1; start < resultsLimit; start += resultsPerPage)
+                    {
+                        results.AddRange(ParseResults(client.GetStringAsync(requestUri).Result));
+                    }
                 }
-                return results;
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
+            return results;
         }
 
         public List<SearchResultLW> ParseResults(string rawJson)
