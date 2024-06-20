@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmokeballSearcherTests", "SearchTests\SmokeballSearcherTests.csproj", "{96159D11-D1BA-4470-9559-816E2AAD2642}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmokeballSearcher", "SmokeballSearcher\SmokeballSearcher.csproj", "{3C4B50CE-5878-481E-B5F1-8CCD93D74BF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96159D11-D1BA-4470-9559-816E2AAD2642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96159D11-D1BA-4470-9559-816E2AAD2642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96159D11-D1BA-4470-9559-816E2AAD2642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96159D11-D1BA-4470-9559-816E2AAD2642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C4B50CE-5878-481E-B5F1-8CCD93D74BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4B50CE-5878-481E-B5F1-8CCD93D74BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4B50CE-5878-481E-B5F1-8CCD93D74BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4B50CE-5878-481E-B5F1-8CCD93D74BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C2F903C-B030-43E5-B767-3272DCDA5BFA}
+	EndGlobalSection
+EndGlobal
